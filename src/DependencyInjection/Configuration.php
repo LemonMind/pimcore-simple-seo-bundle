@@ -20,6 +20,17 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('thumbnail_name')
                     ->defaultValue('meta_image')
                 ->end()
+                ->arrayNode('title_pattern')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('before')
+                            ->defaultNull()
+                        ->end()
+                        ->scalarNode('after')
+                            ->defaultNull()
+                        ->end()
+                    ->end()
+                ->end()
             ->end();
 
         return $treeBuilder;

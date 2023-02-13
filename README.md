@@ -16,10 +16,26 @@ return [
 ```
 
 in the `config/config.yaml` file add
+### Basic configuration
+```yaml
+lemon_mind_pimcore_simple_seo: ~
+```
+
+#### Meta image thumbnail
 ```yaml
 lemon_mind_pimcore_simple_seo:
-    thumbnail_name: 'your_thumb_name'
+    thumbnail_name: 'simple_thumb_name'
 ```
+
+#### Title pattern
+![](docs/img/title-pattern.png)
+```yaml
+lemon_mind_pimcore_simple_seo:
+    title_pattern:
+        before: 'Content before seo title'
+        after: 'content after seo title'
+```
+
 
 ## Usage
 

@@ -18,11 +18,13 @@ class MetaGenerator implements SeoMetaGeneratorInterface
     private bool $isNoIndex = false;
 
     private string $thumbnailName;
+    private TitlePatternConfiguration $titlePattern;
 
-    public function __construct(array $configuration ,SeoGeneratorProvider $seoGeneratorProvider)
+    public function __construct(array $configuration, SeoGeneratorProvider $seoGeneratorProvider)
     {
         $this->seoGeneratorProvider = $seoGeneratorProvider;
         $this->thumbnailName = $configuration['thumbnail_name'];
+        $this->titlePattern = new TitlePatternConfiguration($configuration['title_pattern']);
     }
 
     public function generate(): void
@@ -77,8 +79,17 @@ class MetaGenerator implements SeoMetaGeneratorInterface
 
     public function setTitle(?string $title): self
     {
-        // todo: create pattern ( title + | FirmName )
-        $this->title = $title;
+        $parts = [];
+        if ($this->titlePattern->getBefore()) {
+            $parts[] = $this->titlePattern->getBefore();
+        }
+
+        $parts[] = $title;
+        if ($this->titlePattern->getAfter()) {
+            $parts[] = $this->titlePattern->getAfter();
+        }
+
+        $this->title = implode(' ', $parts);
 
         return $this;
     }

@@ -11,6 +11,7 @@ in the `config/bundles.php` file add
 ```php
 return [
     // another bundles
+    Leogout\Bundle\SeoBundle\LeogoutSeoBundle::class => ['all' => true],
     Lemonmind\PimcoreSimpleSeoBundle\LemonMindPimcoreSimpleSeoBundle::class => ['all' => true],
 ];
 ```
@@ -18,6 +19,12 @@ return [
 in the `config/config.yaml` file add
 ### Basic configuration
 ```yaml
+leogout_seo:
+    general: ~
+    basic: ~
+    og: ~
+    twitter: ~
+
 lemon_mind_pimcore_simple_seo: ~
 ```
 

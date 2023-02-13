@@ -1,0 +1,10 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Lemonmind\PimcoreSimpleSeoBundle\SeoMetaGenerator\DocumentSeoMetaGenerator: ~
+    Lemonmind\PimcoreSimpleSeoBundle\SeoMetaGenerator\ObjectSeoMetaGenerator: ~
+    Lemonmind\PimcoreSimpleSeoBundle\SeoMetaGenerator\MetaGenerator:
+        arguments: ['%lemon_mind_pimcore_simple_seo%']
